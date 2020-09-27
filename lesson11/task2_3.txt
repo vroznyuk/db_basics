@@ -1,0 +1,39 @@
+/* Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+
+Ответ:
+эту задачу можно разными способами решать, все зависит от того, какая структура требуется в предметной области.
+В качестве примера - ситуация, когда один документ соответствует одному разделу каталога и содержит все товары данного раздела.
+*/
+
+> use shop
+switched to db shop
+> db.shop.insert({catalog:{id: 1, name: 'Процессоры', products:	[{id: 1, name: 'Intel Core i3-8100',  description: 'Процессор для настольных ПК на базе Intel', price: 7890.00, created_at: new Date(), updated_at: new Date()}, {id: 2, name: 'Intel Core i5-7400', description: 'Процессор для настольных ПК на базе Intel', price: 12700.00, created_at: new Date(), updated_at: new Date()}]}})
+WriteResult({ "nInserted": 1 })
+> db.shop.find().pretty()
+{
+    "_id": {
+        "$oid": "5f70b56719f81097cf35217a"
+    },
+    "catalog": {
+        "id": 1,
+        "name": "Процессоры",
+        "products": [
+        	{
+            "id": 1,
+            "name": "Intel Core i3-8100",
+            "description": "Процессор для настольных ПК на базе Intel",
+            "price": 7890,
+            "created_at": ISODate("2020-09-27T15:53:11.356Z"),
+            "updated_at": ISODate("2020-09-27T15:53:11.356Z")
+        	}, 
+        	{
+            "id": 2,
+            "name": "Intel Core i5-7400",
+            "description": "Процессор для настольных ПК на базе Intel",
+            "price": 12700,
+            "created_at": ISODate("2020-09-27T15:53:11.356Z"),
+            "updated_at": ISODate("2020-09-27T15:53:11.356Z")
+        	}
+        ]
+    }
+}
